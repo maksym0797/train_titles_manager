@@ -36,7 +36,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "App\\Blog\\": "src/Blog/",
+            "App\\TitlesManager\\": "src/TitlesManager/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

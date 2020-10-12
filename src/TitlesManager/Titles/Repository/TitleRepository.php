@@ -1,15 +1,15 @@
 <?php
 
 
-namespace App\Blog\Titles\Repository;
+namespace App\TitlesManager\Titles\Repository;
 
 
-use App\Blog\Titles\Models\TitleEloquent;
-use App\Blog\Titles\Models\TitlePlatformEloquent;
+use App\TitlesManager\Titles\Models\TitleEloquent;
+use App\TitlesManager\Titles\Models\TitlePlatformEloquent;
 
 /**
  * Class TitleRepository
- * @package App\Blog\Titles\Repository
+ * @package App\TitlesManager\Titles\Repository
  */
 class TitleRepository
 {

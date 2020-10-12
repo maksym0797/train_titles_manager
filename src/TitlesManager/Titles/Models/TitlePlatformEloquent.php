@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Blog\Titles\Models;
+namespace App\TitlesManager\Titles\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer id
  * @property integer title_id
  * @property integer platform_id
- * @package App\Blog\Titles\Models
+ * @package App\TitlesManager\Titles\Models
  */
 class TitlePlatformEloquent extends Model
 {

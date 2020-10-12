@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Blog\Titles\Models;
+namespace App\TitlesManager\Titles\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property float imdb_rating
  * @property integer tomatometer
  * @property boolean is_show
- * @package App\Blog\Titles\Models
+ * @package App\TitlesManager\Titles\Models
  */
 class TitleEloquent extends Model
 {
