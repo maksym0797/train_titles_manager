@@ -38,9 +38,9 @@ class AuthController extends Controller
      */
     public function signIn(UserLoginRequest $request)
     {
-        $loginRequest = $request->validated();
-
-        if(!Auth::attempt($loginRequest)) {
+        $credentials = $request->only('email', 'password');
+dump($credentials);
+        if(!Auth::attempt($credentials)) {
             return new JsonResponse(['message' => 'Credentials not found']);
         }
 

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\HasApiTokens;
 
 /**
@@ -22,6 +23,24 @@ class UserEloquent extends Authenticatable
     const USER_TOKEN_NAME = 'catalog_user';
 
     protected $table = 'users';
+
+    public function getAuthIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
+
+    public function setPasswordAttribute(string $password) {
+        $this->attributes['password'] = Hash::make($password);
+    }
+
+    public function comparePasswordHash(string $password) {
+        return Hash::check($password, $this->getAuthPassword());
+    }
 
     /**
      * The attributes that are mass assignable.

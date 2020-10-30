@@ -31,12 +31,4 @@ class UserRegistrationRequest extends FormRequest
             'language_id' => 'required',
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'email.unique' => \Lang::get('validation.custom.email.unique'),
-            'phone_number.unique' => \Lang::get('validation.custom.phone_number.unique')
-        ];
-    }
 }
