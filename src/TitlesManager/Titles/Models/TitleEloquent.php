@@ -4,6 +4,7 @@
 namespace App\TitlesManager\Titles\Models;
 
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property float imdb_rating
  * @property integer tomatometer
  * @property boolean is_show
+ * @property Collection platforms
  * @package App\TitlesManager\Titles\Models
  */
 class TitleEloquent extends Model
@@ -31,4 +33,19 @@ class TitleEloquent extends Model
         'tomatometer',
         'is_show',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function platforms()
+    {
+        return $this->hasManyThrough(
+            PlatformEloquent::class,
+            TitlePlatformEloquent::class,
+            'title_id', // Foreign key on users table...
+            'id', // Foreign key on posts table...
+            'id', // Local key on countries table...
+            'platform_id' // Local key on users table...
+        );
+    }
 }

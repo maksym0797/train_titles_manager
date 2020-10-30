@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,14 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::group(
-    ['namespace' => 'App\Http\Controllers\Api\Auth', 'prefix' => 'auth'],
-    static function () {
-        Route::post('signup', 'AuthController@signUp');
-        Route::post('signin', 'AuthController@signIn');
-    }
-);
+require_once 'auth.php';
+require_once 'titles.php';

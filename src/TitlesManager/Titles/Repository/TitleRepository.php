@@ -58,4 +58,16 @@ class TitleRepository
 
         return $titlePlatform;
     }
+
+    /**
+     * @param string $keyword
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function findTitlesByKeyword(string $keyword)
+    {
+        return TitleEloquent::with('platforms')
+            ->where('name', 'like', '%' . $keyword . '%')
+            ->paginate()
+        ;
+    }
 }
