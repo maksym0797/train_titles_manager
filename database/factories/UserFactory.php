@@ -2,7 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Blog\User\Models\UserEloquent;
+
+use App\TitlesManager\User\Models\UserEloquent;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 

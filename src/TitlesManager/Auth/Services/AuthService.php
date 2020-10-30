@@ -3,7 +3,7 @@
 
 namespace App\TitlesManager\Auth\Services;
 
-
+use Laravel\Passport\Client as OClient;
 use GuzzleHttp\Client;
 
 /**
@@ -40,7 +40,7 @@ class AuthService
     public function getTokenAndRefreshRoken(string $email, string $password)
     {
 
-        $response = $this->http->post(\url('/oauth/token'), [
+        $response = $this->http->post('http://0.0.0.0:8088/oauth/token', [
             'form_params' => [
                 'grant_type' => 'password',
                 'client_id' => $this->oClient->id,

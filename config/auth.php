@@ -68,7 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Blog\User\Models\UserEloquent::class,
+            'model' => App\TitlesManager\User\Models\UserEloquent::class,
         ],
 
         // 'users' => [

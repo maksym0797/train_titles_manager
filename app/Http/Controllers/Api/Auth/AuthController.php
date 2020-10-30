@@ -41,14 +41,14 @@ class AuthController extends Controller
         $loginRequest = $request->validated();
 
         if(!Auth::attempt($loginRequest)) {
-            return new JsonResponse(['message' => \Lang::get('auth.failed')]);
+            return new JsonResponse(['message' => 'Credentials not found']);
         }
 
+        /** @var UserEloquent $user */
         $user = Auth::user();
+        $token = $user->createToken(UserEloquent::USER_TOKEN_NAME);
 
-        $token = $this->authService->getTokenAndRefreshRoken($user->email, $request->get('password'));
-
-        return new JsonResponse(['user' => $user, 'token' => $token]);
+        return new JsonResponse(['user' => $user, 'token' => $token->accessToken]);
     }
 
     /**
@@ -59,9 +59,10 @@ class AuthController extends Controller
     {
         $registrationRequest = $request->validated();
 
+        /** @var UserEloquent $user */
         $user = UserEloquent::create($registrationRequest);
-        $token = $this->authService->getTokenAndRefreshRoken($user->email, $request->get('password'));
+        $token = $user->createToken(UserEloquent::USER_TOKEN_NAME);
 
-        return new JsonResponse(['user' => $user, 'token' => $token]);
+        return new JsonResponse(['user' => $user, 'token' => $token->accessToken]);
     }
 }

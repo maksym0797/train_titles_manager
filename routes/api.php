@@ -18,4 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-require base_path('routes/auth.php');
+Route::group(
+    ['namespace' => 'App\Http\Controllers\Api\Auth', 'prefix' => 'auth'],
+    static function () {
+        Route::post('signup', 'AuthController@signUp');
+        Route::post('signin', 'AuthController@signIn');
+    }
+);

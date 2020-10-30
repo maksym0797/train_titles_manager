@@ -24,11 +24,11 @@ class UserRegistrationRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
+            'name' => 'required|string',
             'email' => 'required|string|unique:users,email',
-            'phone_number' => 'required|string|unique:users,phone_number',
-            'password' => 'required|confirmed'
+            'password' => 'required',
+            'country_id' => 'required',
+            'language_id' => 'required',
         ];
     }
 

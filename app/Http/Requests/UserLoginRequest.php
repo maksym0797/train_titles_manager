@@ -16,15 +16,6 @@ class UserLoginRequest extends FormRequest
         return true;
     }
 
-    public function messages()
-    {
-
-        return [
-            'phone_number.required' => \Lang::get('validation.custom.phone_number.required'),
-            'password.required' => \Lang::get('validation.custom.password.required')
-        ];
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -33,7 +24,7 @@ class UserLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone_number' => 'required|string',
+            'email' => 'required|string',
             'password' => 'required|string'
         ];
     }

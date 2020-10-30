@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 /**
  * Class User
@@ -16,7 +17,9 @@ use Illuminate\Notifications\Notifiable;
  */
 class UserEloquent extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasApiTokens;
+
+    const USER_TOKEN_NAME = 'catalog_user';
 
     protected $table = 'users';
 
@@ -29,6 +32,8 @@ class UserEloquent extends Authenticatable
         'name',
         'email',
         'password',
+        'country_id',
+        'language_id',
     ];
 
     /**
