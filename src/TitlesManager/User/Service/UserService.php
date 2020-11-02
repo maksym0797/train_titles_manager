@@ -49,13 +49,13 @@ class UserService
 
     /**
      * @param UserEloquent $userEloquent
-     * @return TitleEloquent[]
+     * @return TitleEloquent[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Support\Collection
      */
     public function getUserFavouriteTitles(UserEloquent $userEloquent)
     {
         return $this->userRepository->findLikedByUserId($userEloquent->id)
             ->map(function (UserTitleLikeEloquent $likeEloquent) {
                 return $likeEloquent->title;
-        })->toArray();
+        });
     }
 }

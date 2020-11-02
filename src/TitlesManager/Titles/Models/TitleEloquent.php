@@ -42,10 +42,10 @@ class TitleEloquent extends Model
         return $this->hasManyThrough(
             PlatformEloquent::class,
             TitlePlatformEloquent::class,
-            'title_id', // Foreign key on users table...
-            'id', // Foreign key on posts table...
-            'id', // Local key on countries table...
-            'platform_id' // Local key on users table...
+            'title_id',
+            'id',
+            'id',
+            'platform_id'
         );
     }
 }

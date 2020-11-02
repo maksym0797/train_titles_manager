@@ -57,7 +57,7 @@ class UserController extends Controller
         $user = $request->user();
 
         return response()->json(
-          array_map([$titleTransformer, 'transform'], $this->userService->getUserFavouriteTitles($user))
+          $this->userService->getUserFavouriteTitles($user)->map([$titleTransformer, 'transform'])->toArray()
         );
     }
 }
