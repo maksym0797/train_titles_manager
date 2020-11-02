@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\User;
 
 
 use App\Http\Controllers\Controller;
+use App\TitlesManager\Titles\Transformer\TitleTransformer;
 use App\TitlesManager\User\Models\UserEloquent;
 use App\TitlesManager\User\Service\UserService;
 use Illuminate\Http\Request;
@@ -43,5 +44,20 @@ class UserController extends Controller
         $this->userService->likeTitleByUser($user, $title, $like);
 
         return response()->json([]);
+    }
+
+    /**
+     * @param Request $request
+     * @param TitleTransformer $titleTransformer
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function favourites(Request $request, TitleTransformer $titleTransformer)
+    {
+        /** @var UserEloquent $user */
+        $user = $request->user();
+
+        return response()->json(
+          array_map([$titleTransformer, 'transform'], $this->userService->getUserFavouriteTitles($user))
+        );
     }
 }

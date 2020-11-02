@@ -4,6 +4,7 @@
 namespace App\TitlesManager\User\Models;
 
 
+use App\TitlesManager\Titles\Models\TitleEloquent;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -12,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer user_id
  * @property integer title_id
  * @property boolean like
+ * @property TitleEloquent title
  * @package App\TitlesManager\User\Models
  */
 class UserTitleLikeEloquent extends Model
@@ -27,4 +29,12 @@ class UserTitleLikeEloquent extends Model
         'title_id',
         'like',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function title()
+    {
+        return $this->hasOne(TitleEloquent::class, 'id', 'title_id');
+    }
 }

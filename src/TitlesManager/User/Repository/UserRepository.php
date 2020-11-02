@@ -47,4 +47,15 @@ class UserRepository
 
         $userTitleLike->delete();
     }
+
+    /**
+     * @param int $userId
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|UserTitleLikeEloquent[]
+     */
+    public function findLikedByUserId(int $userId)
+    {
+        return UserTitleLikeEloquent::with(['title'])
+            ->where('user_id', $userId)
+            ->get();
+    }
 }

@@ -4,5 +4,6 @@ Route::group(
     ['namespace' => 'App\Http\Controllers\Api\User', 'prefix' => 'users', 'middleware' => ['auth:api']],
     static function () {
         Route::put('titles/{title}/like', 'UserController@userLikeTitle');
+        Route::get('favourites', 'UserController@favourites');
     }
 );

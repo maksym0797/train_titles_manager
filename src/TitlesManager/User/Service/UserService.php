@@ -4,7 +4,9 @@
 namespace App\TitlesManager\User\Service;
 
 
+use App\TitlesManager\Titles\Models\TitleEloquent;
 use App\TitlesManager\User\Models\UserEloquent;
+use App\TitlesManager\User\Models\UserTitleLikeEloquent;
 use App\TitlesManager\User\Repository\UserRepository;
 
 /**
@@ -43,5 +45,17 @@ class UserService
         }
 
         $this->userRepository->removeTitleLike($titleId, $userEloquent->id);
+    }
+
+    /**
+     * @param UserEloquent $userEloquent
+     * @return TitleEloquent[]
+     */
+    public function getUserFavouriteTitles(UserEloquent $userEloquent)
+    {
+        return $this->userRepository->findLikedByUserId($userEloquent->id)
+            ->map(function (UserTitleLikeEloquent $likeEloquent) {
+                return $likeEloquent->title;
+        })->toArray();
     }
 }
