@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 
 require_once 'auth.php';
 require_once 'titles.php';
+require_once 'user.php';
