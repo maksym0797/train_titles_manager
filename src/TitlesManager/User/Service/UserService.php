@@ -36,8 +36,8 @@ class UserService
     {
         if ($like) {
             $this->userRepository->createTitleLike(
-                $userEloquent->id,
-                $titleId
+                $titleId,
+                $userEloquent->id
             );
             return;
         }
