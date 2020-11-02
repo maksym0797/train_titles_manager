@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserTitleLikeEloquent extends Model
 {
-    protected $table = 'user_title_like';
+    protected $table = 'user_title_likes';
     /**
      * The attributes that are mass assignable.
      *
